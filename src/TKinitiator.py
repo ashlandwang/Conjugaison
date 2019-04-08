@@ -43,25 +43,9 @@ def update_now(*args):
 def veri(*args):
     global qa
     global incorrect
-
     if reponse.get() == qa[1]:
         message.set("C'est correct! Bon courage!")
         update_now()
-    elif reponse.get() != qa[1] and qa[1].find(";") > 0:
-        qa_list = qa[1].split(";")
-        __flag = 0
-        for qa_item in qa_list:
-            if reponse.get() == qa_item:
-                __flag = 1
-        if __flag == 1:
-            message.set("C'est correct! (" + qa[1] + ")")
-            update_now()
-        else:
-            incorrect += 1
-            if incorrect < 4:
-                message.set("Ce n'est pas correct!")
-            else:
-                message.set("La réponse possible est: " + qa[1])
     else:
         incorrect += 1
         if incorrect < 4:
